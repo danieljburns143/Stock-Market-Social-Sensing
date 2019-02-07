@@ -12,17 +12,14 @@ class StockScraper():
 	def getTimeSeriesDaily(self, symbol, outputsize='compact', datatype='json'):
 		payload = {'function': 'TIME_SERIES_DAILY', 'symbol': symbol, \
 			'outputsize': outputsize, 'datatype': datatype, 'apikey': self.apiKey}
-		return requests.get(self.queryURL, params=payload).json()
+		return requests.get(self.queryURL, params=payload)
 	
 	def getTimeSeriesWeekly(self, symbol, datatype='json'):
 		payload = {'function': 'TIME_SERIES_WEEKLY', 'symbol': symbol, \
 			'datatype': datatype, 'apikey': self.apiKey}
-		return requests.get(self.queryURL, params=payload).json()
+		return requests.get(self.queryURL, params=payload)
 	
 	def getTimeSeriesMonthly(self, symbol, datatype='json'):
 		payload = {'function': 'TIME_SERIES_MONTHLY', 'symbol': symbol, \
 			'datatype': datatype, 'apikey': self.apiKey}
-		return requests.get(self.queryURL, params=payload).json()
-
-stockScraper = StockScraper()
-print(stockScraper.getTimeSeriesMonthly('SQ')['Meta Data'])
+		return requests.get(self.queryURL, params=payload)

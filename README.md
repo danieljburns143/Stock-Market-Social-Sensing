@@ -7,6 +7,6 @@ This project is a system to analyze the stock market through a social sensing le
 ***
 ### Dependencies
 * numpy
-..1. `pip3 install numpy`
+    1. `pip3 install numpy`
 * textblob
-..1. `pip3 install textblob`
+    1. `pip3 install textblob`

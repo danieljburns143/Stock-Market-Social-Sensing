@@ -12,3 +12,5 @@ This project is a system to analyze the stock market through a social sensing le
     1. `pip3 install textblob`
 * pytest
     1. `pip3 install -U pytest`
+* requirements.txt (in GetOldTweetsPython)
+    1. `pip3 install -r src/GetOldTweetsPython/requirements.txt`

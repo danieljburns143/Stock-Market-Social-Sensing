@@ -1,2 +1,2 @@
-from .stockScraper import *
-from .textAnalysis import *
+from . import stockScraper
+from . import textAnalysis

@@ -1,5 +1,5 @@
 import pytest
-from stockScraper import StockScraper
+from ..src.stockScraper import StockScraper
 
 class TestStockScraper():
 

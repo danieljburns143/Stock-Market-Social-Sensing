@@ -1,0 +1,2 @@
+Average polarity: 0.17
+Average subjectivity: 0.46

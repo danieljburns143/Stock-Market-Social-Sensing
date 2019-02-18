@@ -30,6 +30,3 @@ class TwitterScraper():
 if __name__ == '__main__':
 	twitterScraper = TwitterScraper()
 	twitterScraper.username = 'elonmusk'
-	twitterScraper.maxTweets = 1
-	for tweet in twitterScraper.getTweets():
-		print(tweet.username)

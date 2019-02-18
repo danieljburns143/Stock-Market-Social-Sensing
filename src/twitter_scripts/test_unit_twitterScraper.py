@@ -10,7 +10,7 @@ class TestTextAnalysis():
 		twitterScraper.maxTweets = 1
 		tweets = twitterScraper.getTweets()
 		assert(tweets != None)
-		assert(tweets.username == 'elonmusk')
+		assert(tweets[0].username == 'elonmusk')
 
 	def test_maxTweets(self):
 		twitterScraper = TwitterScraper()

@@ -6,11 +6,11 @@
 This project is a system to analyze the stock market through a social sensing lens.
 ***
 ### Dependencies
-* numpy
-    1. `pip3 install numpy`
-* textblob
-    1. `pip3 install textblob`
-* pytest
-    1. `pip3 install -U pytest`
-* requirements.txt (in GetOldTweetsPython)
-    1. `pip3 install -r src/GetOldTweetsPython/requirements.txt`
+1. numpy
+    * `pip3 install numpy`
+2. textblob
+    * `pip3 install textblob`
+3. pytest
+    * `pip3 install -U pytest`
+4. requirements.txt (in GetOldTweetsPython)
+    * `pip3 install -r src/GetOldTweetsPython/requirements.txt`

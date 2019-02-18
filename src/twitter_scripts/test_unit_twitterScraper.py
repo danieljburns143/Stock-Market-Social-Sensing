@@ -10,7 +10,7 @@ class TestTextAnalysis():
 		twitterScraper.maxTweets = 1
 		tweets = twitterScraper.getTweets()
 		assert(tweets != None)
-		assert(tweets[0].username == 'elonmusk')
+		assert(tweets.username == 'elonmusk')
 
 	def test_maxTweets(self):
 		twitterScraper = TwitterScraper()
@@ -41,5 +41,14 @@ class TestTextAnalysis():
 		twitterScraper = TwitterScraper()
 		twitterScraper.username = 'elonmusk'
 		twitterScraper.topTweets = True
+		twitterScraper.maxTweets = 2
+		tweets = twitterScraper.getTweets()
+		assert(tweets != None)
+	
+	def test_location(self):
+		twitterScraper = TwitterScraper()
+		twitterScraper.location = 'Indiana'
+		twitterScraper.within = '20mi'
+		twitterScraper.maxTweets = 4
 		tweets = twitterScraper.getTweets()
 		assert(tweets != None)

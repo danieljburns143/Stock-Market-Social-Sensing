@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-# Work-a-round to Python's relative import system
-if __name__ == '__main__':
-	from GetOldTweets_python import got3
+from GetOldTweets_python import got3
 
 class TwitterScraper():
 
@@ -28,3 +26,10 @@ class TwitterScraper():
 		if self.within: tweetCriteria.setWithin(self.within)
 		if self.maxTweets: tweetCriteria.setMaxTweets(self.maxTweets)
 		return got3.manager.TweetManager.getTweets(tweetCriteria)
+
+if __name__ == '__main__':
+	twitterScraper = TwitterScraper()
+	twitterScraper.username = 'elonmusk'
+	twitterScraper.maxTweets = 1
+	for tweet in twitterScraper.getTweets():
+		print(tweet.username)

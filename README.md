@@ -14,5 +14,3 @@ This project is a system to analyze the stock market through a social sensing le
     * `pip3 install -U pytest`
 4. requirements.txt (in GetOldTweetsPython)
     * `pip3 install -r src/GetOldTweetsPython/requirements.txt`
-5. bloomberg
-    * `python -m pip install --index-url=https://bloomberg.bintray.com/pip/simple blpapi`

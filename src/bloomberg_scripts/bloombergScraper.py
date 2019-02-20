@@ -4,6 +4,7 @@ import blpapi
 import datetime
 
 class BloombergScraper:
+
     def __init__(self):
         self._tickers = []
         self._executives = {}
@@ -61,5 +62,3 @@ class BloombergScraper:
             if type(value) == list: self._tickers = value
             else: raise TypeError("tickers must be list of ticker symbols")
 
-
-        

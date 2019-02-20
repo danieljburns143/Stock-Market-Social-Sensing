@@ -3,6 +3,7 @@ import pytest
 from bloombergScraper import *
 
 class TestBloombergScraper():
+
     def test_make_request(self):
         bs = BloombergScraper()
         print (bs.make_request())

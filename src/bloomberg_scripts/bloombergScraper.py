@@ -56,6 +56,7 @@ class BloombergScraper:
         self.session.start()
         if not self.session.start():
                 print ("Failed to start session.")
+        self.session.openService("//blp/refdata")
 
     # Properties
     @property
@@ -66,6 +67,6 @@ class BloombergScraper:
 
     # Setters
     @tickers.setter
-    def tickers(self, value):
+    def set_tickers(self, value):
         if type(value) == list: self._tickers = value
         else: raise TypeError("tickers must be list of ticker symbols")

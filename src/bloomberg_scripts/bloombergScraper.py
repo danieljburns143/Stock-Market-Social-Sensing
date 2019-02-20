@@ -4,6 +4,7 @@ import blpapi
 import datetime
 
 class BloombergScraper:
+
     def __init__(self):
         self._tickers = []
         self._executives = {}

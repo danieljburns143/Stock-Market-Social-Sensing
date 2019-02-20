@@ -1,11 +1,13 @@
+#!/usr/bin/env python3
+
 import src.twitter_scripts.twitterScraper
-import src.text_scripts.extAnalysis 
+import src.text_scripts.textAnalysis 
 import json
 
-def main(args):
-	json_data = open("/data/Tesla/Tesla_stock.json").read()
-	data = json.loads(json_data)
-	print (data)
+def main():
+	with open('./data/Tesla/Tesla_stock.json', 'r') as f:
+		json_data = json.load(f)
+	print (json_data)
 
 if __name__=="__main__":
 	main()

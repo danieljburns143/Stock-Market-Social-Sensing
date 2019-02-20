@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import blapi
+import blpapi
 import datetime
 
 class BloombergScraper:
@@ -8,7 +8,8 @@ class BloombergScraper:
         self._tickers = []
         self._executives = {}
 
-    def make_request(ticker="AAPL"): # Ticker symbol defaults to Apple.
+    def make_request(ticker=None): # Ticker symbol defaults to Apple.
+        if ticker is None: ticker = "AAPL"
         reference_data_fields = ["NAME_OF_CHIEF_EXECUTIVE_OFFICER",
                                  "LAST_CEO_START_DATE",
                                  "INDEPENDENT_DIRECTORS"]

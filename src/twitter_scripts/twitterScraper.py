@@ -18,12 +18,12 @@ class TwitterScraper():
 	def getTweets(self):
 		tweetCriteria = got3.manager.TweetCriteria()
 		if self.username: tweetCriteria.setUsername(self.username)
+		if self.query: tweetCriteria.setQuerySearch(self.query)
 		if self.since: tweetCriteria.setSince(self.since)
 		if self.until: tweetCriteria.setUntil(self.until)
-		if self.query: tweetCriteria.setQuerySearch(self.query)
-		if self.topTweets: tweetCriteria.setTopTweets(self.topTweets)
 		if self.near: tweetCriteria.setNear(self.near)
 		if self.within: tweetCriteria.setWithin(self.within)
+		if self.topTweets: tweetCriteria.setTopTweets(self.topTweets)
 		if self.maxTweets: tweetCriteria.setMaxTweets(self.maxTweets)
 		return got3.manager.TweetManager.getTweets(tweetCriteria)
 	

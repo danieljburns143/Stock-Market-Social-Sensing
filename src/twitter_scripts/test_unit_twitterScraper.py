@@ -2,7 +2,7 @@ import pytest
 
 from twitterScraper import TwitterScraper
 
-class TestTextAnalysis():
+class TestTwitterScraper():
 
 	def test_username(self):
 		twitterScraper = TwitterScraper()

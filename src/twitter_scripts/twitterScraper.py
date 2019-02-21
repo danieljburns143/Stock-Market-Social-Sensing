@@ -28,10 +28,17 @@ class TwitterScraper():
 	def getMostFavoritedTweets(self, numTweets):
 		tweets = self.getTweets()
 		topTweets = sorted(tweets, key=lambda x: x.favorites)[-numTweets:]
+		return topTweets
 	
 	def getMostRetweetedTweets(self, numTweets):
 		tweets = self.getTweets()
 		topTweets = sorted(tweets, key=lambda x: x.retweets)[-numTweets:]
+		return topTweets
+	
+	def getMostMentionedTweets(self, numTweets):
+		tweets = self.getTweets()
+		topTweets = sorted(tweets, key=lambda x: x.mentions)[-numTweets:]
+		return topTweets
 	
 	# Properties
 	@property

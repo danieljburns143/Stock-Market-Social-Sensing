@@ -1,6 +1,6 @@
 import pytest
 
-from stockScraper import StockScraper
+from src.stock_scripts.stockScraper import StockScraper
 
 class TestStockScraper():
 

@@ -1,6 +1,6 @@
 import pytest
 
-from textAnalysis import *
+from src.text_scripts.textAnalysis import *
 
 class TestTextAnalysis():
 

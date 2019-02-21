@@ -1,6 +1,6 @@
 import pytest
 
-from twitterScraper import TwitterScraper
+from src.twitter_scripts.twitterScraper import TwitterScraper
 
 class TestTwitterScraper():
 

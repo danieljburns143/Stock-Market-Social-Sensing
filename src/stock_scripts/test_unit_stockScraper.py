@@ -1,4 +1,5 @@
 import pytest
+
 from stockScraper import StockScraper
 
 class TestStockScraper():

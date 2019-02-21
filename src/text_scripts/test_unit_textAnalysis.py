@@ -1,4 +1,5 @@
 import pytest
+
 from textAnalysis import *
 
 class TestTextAnalysis():

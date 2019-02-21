@@ -8,7 +8,7 @@ from src.twitter_scripts.twitterScraper import TwitterScraper
 
 def getTopTweets(): 
 	tweetScraper = TwitterScraper(since="2018-12-11", until="2018-12-12", query="tesla")
-	topTweets = tweetScraper.getTopTweets(10)
+	topTweets = tweetScraper.getMostFavoritedTweets(10)
 	for tweet in topTweets:
 		if tweet.id in influencers.keys():
 			influencers[tweet.id].append(tweet)

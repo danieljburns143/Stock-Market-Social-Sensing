@@ -25,7 +25,7 @@ class TwitterScraper():
 		if self.maxTweets: tweetCriteria.setMaxTweets(self.maxTweets)
 		return got3.manager.TweetManager.getTweets(tweetCriteria)
 	
-	def getTopTweets(self, numTweets):
+	def getMostFavoritedTweets(self, numTweets):
 		tweets = self.getTweets()
 		topTweets = sorted(tweets, key=lambda x: x.favorites)[-numTweets:]
 	

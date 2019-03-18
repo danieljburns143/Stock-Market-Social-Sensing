@@ -5,22 +5,49 @@ import json
 from src.stock_scripts import stockScraper
 from src.text_scripts import textAnalysis
 from src.twitter_scripts.twitterScraper import TwitterScraper
+from src.heatmap_scripts.heatMapper import heatMapper
 
-def getTopTweets(): 
-	tweetScraper = TwitterScraper(since="2018-12-11", until="2018-12-12", query="tesla")
-	topTweets = tweetScraper.getMostFavoritedTweets(10)
-	for tweet in topTweets:
-		if tweet.id in influencers.keys():
-			influencers[tweet.id].append(tweet)
-		else: 
-			influencers[tweet.id] = [tweet]
+def getStocksDaily(symbol, timeStart, timeEnd):
+        ss = stockScraper.StockScraper()
+        data = ss.getTimeSeriesDaily(symbol).json()
+        record = False
+        shortenedData = {}
+        for entry in data["Time Series (Daily)"]:
+            if (record): shortenedData[entry] = data["Time Series (Daily)"][entry]    
+            if (entry == timeEnd): record = True
+            if (entry == timeStart): break
+        if len(shortenedData)==0:
+            print("No data found for " + symbol + " between " + timeStart + " and " + timeEnd+ ". This time period may be when the market is closed.")
+        else: return shortenedData
+
+def getTopTweets(query, timeStart, timeEnd): 
+        influencers = {}
+        tweetScraper = TwitterScraper(since=timeStart, until=timeEnd, query=query)
+        topTweets = tweetScraper.getMostFavoritedTweets(10)
+        for tweet in topTweets:
+            if tweet.id in influencers.keys():
+                influencers[tweet.id].append(tweet)
+            else: 
+                influencers[tweet.id] = [tweet]
+        return influencers
 
 def main():
-	with open('./data/Tesla/Tesla_stock.json', 'r') as f:
-		json_data = json.load(f)
-	getTopTweets()
-	print(influencers)
+        #stocks = open("stocks.txt","w")
+        #stockTSLA = getStocksDaily("TSLA", "2018-12-10","2018-12-14") 
+        #stockAMZN = getStocksDaily("AMZN","2018-10-22","2018-10-25")
+        #print ("\nTSLA") 
+        #for stock in stockTSLA.keys():
+        #    file.write(stock + "," + stockTSLA[stock])
+        #print ("\nAMZN")
+        #for stock in stockAMZN:
+        #    file.write(stock + "," + stockTSLA[stock])
+        #x = getTopTweets("tesla","2018-12-11","2018-12-12")
+        y = getTopTweets("amazon","2018-10-23","2018-10-24")#25
+        for influencer in x.keys():
+            print (x[influencer][0])
+        #for influencer in y.keys():
+        #    print (y[influencer])
+
 
 if __name__ == '__main__':
-	influencers = {}
-	main()
+        main()

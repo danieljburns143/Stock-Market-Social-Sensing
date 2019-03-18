@@ -1,7 +1,9 @@
+#/usr/bin/python3
+
 import json
 import requests
 
-class StockScraper():
+class stockScraper():
 
 	def __init__(self):
 		self.apiKey = '7IG1A5W6UY6CAZQI'

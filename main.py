@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#/usr/bin/env python3
 
 import json
-
+import re
 from src.stock_scripts import stockScraper
 from src.text_scripts import textAnalysis
 from src.twitter_scripts.twitterScraper import TwitterScraper
@@ -24,12 +24,12 @@ def getTopTweets(query, timeStart, timeEnd):
         influencers = {}
         tweetScraper = TwitterScraper(since=timeStart, until=timeEnd, query=query)
         topTweets = tweetScraper.getMostFavoritedTweets(10)
-        for tweet in topTweets:
-            if tweet.id in influencers.keys():
-                influencers[tweet.id].append(tweet)
-            else: 
-                influencers[tweet.id] = [tweet]
-        return influencers
+        return topTweets
+#            if tweet.id in influencers.keys():
+#                influencers[tweet.id].append(tweet)
+#            else: 
+#                influencers[tweet.id] = [tweet]
+#        return influencers
 
 def main():
         #stocks = open("stocks.txt","w")
@@ -42,12 +42,10 @@ def main():
         #for stock in stockAMZN:
         #    file.write(stock + "," + stockTSLA[stock])
         #x = getTopTweets("tesla","2018-12-11","2018-12-12")
-        y = getTopTweets("amazon","2018-10-23","2018-10-24")#25
-        for influencer in x.keys():
-            print (x[influencer][0])
-        #for influencer in y.keys():
-        #    print (y[influencer])
-
-
+        x = getTopTweets("amazon","2018-10-23","2018-10-24")#2018-10-23 - 2018-10-24
+        for tweet in x:
+            print ("--")
+            print (tweet.text.strip())
+            print ("--")
 if __name__ == '__main__':
         main()

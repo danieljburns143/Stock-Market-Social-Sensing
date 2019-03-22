@@ -6,21 +6,14 @@ from src.stock_scripts import stockScraper
 from src.text_scripts import textAnalysis
 from src.twitter_scripts.twitterScraper import TwitterScraper
 
-def getTopTweets(): 
-	tweetScraper = TwitterScraper(since="2018-12-11", until="2018-12-12", query="tesla")
-	topTweets = tweetScraper.getMostFavoritedTweets(10)
-	for tweet in topTweets:
-		if tweet.id in influencers.keys():
-			influencers[tweet.id].append(tweet)
-		else: 
-			influencers[tweet.id] = [tweet]
+def getTweets(): 
+	tweetScraper = TwitterScraper(since="2019-02-21", until="2019-02-28", query="tesla")
+	tweets = tweetScraper.getTweets()
+	for tweet in tweets:
+		print(textAnalysis.getSentiment(tweet.text).polarity)
 
 def main():
-	with open('./data/Tesla/Tesla_stock.json', 'r') as f:
-		json_data = json.load(f)
-	getTopTweets()
-	print(influencers)
+	getTweets()
 
 if __name__ == '__main__':
-	influencers = {}
 	main()

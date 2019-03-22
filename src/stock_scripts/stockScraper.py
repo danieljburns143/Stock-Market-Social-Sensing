@@ -3,7 +3,7 @@
 import json
 import requests
 
-class stockScraper():
+class StockScraper():
 
 	def __init__(self):
 		self.apiKey = '7IG1A5W6UY6CAZQI'

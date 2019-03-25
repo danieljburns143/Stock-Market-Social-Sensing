@@ -23,6 +23,6 @@ This project is a system to analyze the stock market through a social sensing le
     *    `"api_key" : "123456789"`
     *  `}`
 7. requirements.txt (in plotly)
-    *`pip3 install geopandas=0.30`
-    *`pip3 install pyshp==1.210`
-    *`pip3 install shapely==1.6.3`
+    * `pip3 install geopandas=0.30`
+    * `pip3 install pyshp==1.210`
+    * `pip3 install shapely==1.6.3`

@@ -7,11 +7,14 @@ from src.text_scripts import textAnalysis
 from src.twitter_scripts.twitterScraper import TwitterScraper
 from src.heatmap_scripts.heatMapper import heatMapper
 
+
 def getTweets(): 
-	tweetScraper = TwitterScraper(since="2019-02-28", until="2019-03-07", query="canada goose")
-	tweets = tweetScraper.getTweets()
-	for tweet in tweets:
-		print(textAnalysis.getSentiment(tweet.text).polarity)
+    tweetScraper = TwitterScraper(since="2019-02-28", until="2019-03-07", query="canada goose")
+    tweets = tweetScraper.getTweets()
+    for tweet in tweets:
+        print(tweet.text)
+        print(textAnalysis.getSentimentBlob(tweet.text).polarity)
+        print(textAnalysis.getSentimentVader(tweet.text))
 
 def getStocks():
 	stockScraper = StockScraper()
@@ -22,4 +25,4 @@ def main():
 	getTweets()
 
 if __name__ == '__main__':
-        main()
+		main()

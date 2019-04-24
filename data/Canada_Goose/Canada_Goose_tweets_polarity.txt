@@ -2802,6 +2802,7 @@
 {'neg': 0.173, 'neu': 0.722, 'pos': 0.105, 'compound': -0.6339}
 {'neg': 0.151, 'neu': 0.732, 'pos': 0.116, 'compound': -0.4939}
 {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
 {'neg': 0.451, 'neu': 0.476, 'pos': 0.073, 'compound': -0.9173}
 {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
 {'neg': 0.0, 'neu': 0.771, 'pos': 0.229, 'compound': 0.6858}

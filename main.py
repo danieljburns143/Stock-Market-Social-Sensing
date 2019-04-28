@@ -29,7 +29,6 @@ def getSentiment():
 def getStocks():
     stockfile = open(os.path.join(os.path.dirname(__file__),
     "data/Coca_Cola/Coca_Cola_stocks.json"), "w")
-
     stockScraper = StockScraper()
     stockPrices = stockScraper.getTimeSeriesDaily('KO')
     for line in stockPrices.text:

@@ -61,18 +61,14 @@ def clusterTweets(similarity_matrix, bound, tweets, polarity):
 
 def main():
     tweets = readTweets()
-    print (compareTweets(tweets[0],tweets[0]))
-    print (compareTweets(tweets[0], tweets[1]))
     polarities = readPolarity()
     matrix = measureTweets(tweets)
-    print (matrix[0][1])
-    print (matrix[0][0])
     for line in matrix:
         print (line)
     clustered_tweets = clusterTweets(matrix, 0.75, tweets, polarities)
-    #for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
-    #    print ("Text: " + str(cluster.center) + "\nPolarity:" + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
-    #    print ("\n") 
+    for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
+        print ("Text: " + str(cluster.center) + "\nPolarity:" + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
+        print ("\n") 
 
 if __name__=='__main__':
     main()

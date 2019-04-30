@@ -34,10 +34,10 @@ def readTweets(path="data/Canada_Goose/Canada_Goose_tweets.txt"):
     return tweets
 
 def compareTweets(t1,t2):
-    return Levenshtein.ratio(t1,t2)
+    return round(Levenshtein.ratio(t1,t2),3)
 
 def measureTweets(tweets):
-    similarity_matrix = [[0]*len(tweets)]*len(tweets)
+    similarity_matrix = [[0 for x in range(len(tweets))] for y in range(len(tweets))]
     for x,tweet1 in enumerate(tweets):
         for y,tweet2 in enumerate(tweets):
             similarity_matrix[x][y] = compareTweets(tweet1,tweet2)
@@ -53,20 +53,26 @@ def clusterTweets(similarity_matrix, bound, tweets, polarity):
                 if i not in centers.keys():
                     centers[i] = Cluster(tweets[i],polarity[i])
                 else:
-                    centers[i].add_tweet(tweet[j],polarity[j])
-                    clustered.append[j] 
+                    centers[i].add_tweet(tweets[j],polarity[j], similarity)
+                    clustered.append(j) 
     for i in centers.keys():
         clusters.append(centers[i])
     return clusters
 
 def main():
     tweets = readTweets()
+    print (compareTweets(tweets[0],tweets[0]))
+    print (compareTweets(tweets[0], tweets[1]))
     polarities = readPolarity()
     matrix = measureTweets(tweets)
+    print (matrix[0][1])
+    print (matrix[0][0])
+    for line in matrix:
+        print (line)
     clustered_tweets = clusterTweets(matrix, 0.75, tweets, polarities)
-    for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
-        print ("Text: " + str(cluster.center) + "\nPolarity:" + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
-        print ("\n") 
+    #for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
+    #    print ("Text: " + str(cluster.center) + "\nPolarity:" + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
+    #    print ("\n") 
 
 if __name__=='__main__':
     main()

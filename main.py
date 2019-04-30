@@ -9,20 +9,18 @@ from src.heatmap_scripts.heatMapper import heatMapper
 
 
 def getTweets(): 
-    tweetScraper = TwitterScraper(since="2019-02-28", until="2019-03-07", query="canada goose")
+    tweetScraper = TwitterScraper(since="2019-04-08", until="2019-04-12", query="visa")
     tweets = tweetScraper.getTweets()
     for tweet in tweets:
         print(tweet.text)
-        print(textAnalysis.getSentimentBlob(tweet.text).polarity)
-        print(textAnalysis.getSentimentVader(tweet.text))
 
 def getStocks():
-	stockScraper = StockScraper()
-	stockPrices = stockScraper.getTimeSeriesDaily('GOOS')
-	print(stockPrices.text)
+    stockScraper = StockScraper()
+    stockPrices = stockScraper.getTimeSeriesDaily('GOOS')
+    print(stockPrices.text)
 
 def main():
-	getTweets()
+    getStocks()
 
 if __name__ == '__main__':
-		main()
+    main()

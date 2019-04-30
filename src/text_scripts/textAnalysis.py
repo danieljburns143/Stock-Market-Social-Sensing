@@ -8,4 +8,8 @@ def getSentimentVader(text):
     return SentimentIntensityAnalyzer().polarity_scores(text) 
 
 def getLanguage(text):
-    return TextBlob(text).detect_language()
+    try:
+        x = TextBlob(text).detect_language()
+        return x
+    except:
+        return "null"

@@ -17,7 +17,7 @@ This project is a system to analyze the stock market through a social sensing le
 5. pytest
     * `pip3 install -U pytest`
 6. requirements.txt (in GetOldTweetsPython)
-    * `pip3 install -r ~/GetOldTweetsPython/requirements.txt
+    * `pip3 install -r ~/GetOldTweetsPython/requirements.txt'
 7. requests
     * `pip3 install requests'
 7. plotly

@@ -9,17 +9,14 @@ import json
 from src.text_scripts import textAnalysis
 
 class Cluster:
-    def __init__(self, tweet):
+    def __init__(self, tweet, polarity):
         self.center = tweet
         self.nearby = []
-        self.total_polarity = 0.0
+        self.total_polarity = polarity
 
     def add_tweet(self, tweet, polarity, distance):
         self.nearby.append([tweet, polarity, distance])
-        print (self.total_polarity)
-        self.total_polarity += polarity
-        print (self.total_polarity)
-        print ("--")
+        self.total_polarity += float(polarity)
 
 def readPolarity(path="data/Canada_Goose/Canada_Goose_tweets_polarity.txt"):
     polarity = []
@@ -43,19 +40,23 @@ def measureTweets(tweets):
     similarity_matrix = [[0]*len(tweets)]*len(tweets)
     for x,tweet1 in enumerate(tweets):
         for y,tweet2 in enumerate(tweets):
-            similarity_matrix[x][y]= compareTweets(tweet1,tweet2)
+            similarity_matrix[x][y] = compareTweets(tweet1,tweet2)
     return similarity_matrix
 
 def clusterTweets(similarity_matrix, bound, tweets, polarity):
     clusters = []
-    print "!!!!!!!"
-    print polarity
+    clustered = []
+    centers = {}
     for i,row in enumerate(similarity_matrix):
-        center = Cluster(tweets[i])
         for j, similarity in enumerate(row):
-            if similarity > bound:
-                center.add_tweet(tweets[j], polarity[j], similarity)
-        clusters.append(center)
+            if similarity == 1.0 and j not in (centers or clustered):
+                if i not in centers.keys():
+                    centers[i] = Cluster(tweets[i],polarity[i])
+                else:
+                    centers[i].add_tweet(tweet[j],polarity[j])
+                    clustered.append[j] 
+    for i in centers.keys():
+        clusters.append(centers[i])
     return clusters
 
 def main():
@@ -63,9 +64,9 @@ def main():
     polarities = readPolarity()
     matrix = measureTweets(tweets)
     clustered_tweets = clusterTweets(matrix, 0.75, tweets, polarities)
-    #for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
-    #    print ("Text: " + str(cluster.center) + "\nPolarity:"
-    #            + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
-    #    print ("\n") 
+    for cluster in sorted(clustered_tweets, key=lambda x: len(x.nearby)):
+        print ("Text: " + str(cluster.center) + "\nPolarity:" + str(cluster.total_polarity) + "\nInfluence:" + str(len(cluster.nearby)))
+        print ("\n") 
+
 if __name__=='__main__':
     main()

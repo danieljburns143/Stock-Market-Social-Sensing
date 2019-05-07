@@ -69,21 +69,14 @@ def filter_cluster(clusters, matrix):
     return new_clusters
 
 def main():
-    print ("start")
     tweets = readTweets()
-    print ("read tweets")
     polarities = readPolarity()
-    print ("read polarities")
     matrix = measureTweets(tweets)
-    print ("measuring tweets for sim matrix")
-    print ("clustering")
     clustered = clusterTweets(matrix, 0.75, tweets, polarities)
-    print ("clustered")
     i = 0
     clusters = []
     for item in clustered.keys():
         clusters.append(clustered[item])
-    print ("filtering")
     filtered_clusters = filter_cluster(clusters, matrix)
     top_text = []
     top = []
@@ -95,7 +88,7 @@ def main():
         if i>10:
             break
     for item in top:
-        print (str(item.center) + " : " + str(item.total_polarity) + " : " + str(len(item.nearby)))
+        print (str(item.center) + " : " + str(float(item.total_polarity)/float(len(item.nearby))) + " : " + str(len(item.nearby)))
 
 if __name__=='__main__':
     main()
